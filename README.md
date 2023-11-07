@@ -6,6 +6,9 @@ data Color = Red | Yellow | Green
 type Coord = (Int, Int)
 -- record
 data Person = MkPerson { name :: String, age :: Int } deriving (Show)
+-- algebraic type
+data BookInfo = Book Int String deriving (Show)
+data BillingInfo = CreditCard Float Strig | Invoice Float Int deriving (Show)
 ```
 
 | type class | methods |
@@ -41,6 +44,10 @@ map :: (a -> b) -> [a] -> [b]
 
 # Functions
 ```haskell
+-- type constraints
+sort :: Ord a => [a] -> [a]
+abs :: (Num a, Ord a) => a -> a
+
 -- case expression
 describeList :: [a] -> String
 describeList xs = "The list is " ++ case xs of
@@ -48,7 +55,6 @@ describeList xs = "The list is " ++ case xs of
     [x] -> "a singleton list"
     xs  -> "a longer list"
 
-abs :: (Num a, Ord a) => a -> a
 -- guard
 abs n
     | n < 0     = -n
